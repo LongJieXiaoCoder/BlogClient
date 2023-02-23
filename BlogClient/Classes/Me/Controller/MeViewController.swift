@@ -11,6 +11,7 @@ import UIKit
 class MeViewController: UIBaseViewController {
     let bgImageHeight: CGFloat = 230
 
+    
     var tableView: UITableView!
     var tableHeadView: MeTableHeadView!
     var tableFooterView: MeTableFooterView!
