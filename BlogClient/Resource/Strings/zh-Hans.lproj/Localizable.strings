@@ -1,0 +1,35 @@
+/* 
+  account.strings
+  BlogClient
+
+  Created by LongMac on 2020/4/26.
+  Copyright © 2020 LongMac. All rights reserved.
+*/
+
+// TabBar
+"blog" = "博客";
+"news" = "新闻";
+"flash" = "闪存";
+"library" = "知识库";
+"me" = "我的";
+
+// Account
+"my blogs"="博客";
+"essay"="随笔";
+"fave"="收藏";
+"setting"="设置";
+"feedback"="意见与反馈";
+"about"="关于";
+"logout"="退出登录";
+
+
+// 时间
+"justNow"="刚刚";
+"secondBefore"="%i 秒前";
+"minuteBefore"="%i 分钟前";
+"hoursBefore"="%i 小时前";
+"yesterdayTime"="昨天 %@";
+
+//MARK: - 首页
+"home" = "首页";
+"essence" = "精选";

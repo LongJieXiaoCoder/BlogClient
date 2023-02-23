@@ -1,0 +1,8 @@
+/* 
+  InfoPlist.strings
+  BlogClient
+
+  Created by LongMac on 2020/4/26.
+  Copyright © 2020 LongMac. All rights reserved.
+*/
+CFBundleDisplayName = "博客园";
