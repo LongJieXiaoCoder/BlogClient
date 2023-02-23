@@ -115,27 +115,34 @@ struct R: Rswift.Validatable {
   }
   #endif
 
-  /// This `R.color` struct is generated, and contains static references to 5 colors.
+  /// This `R.color` struct is generated, and contains static references to 13 colors.
   struct color {
-    /// Color `black_000000_14`.
-    static let black_000000_14 = Rswift.ColorResource(bundle: R.hostingBundle, name: "black_000000_14")
     /// Color `black_444444`.
     static let black_444444 = Rswift.ColorResource(bundle: R.hostingBundle, name: "black_444444")
+    /// Color `black_757575`.
+    static let black_757575 = Rswift.ColorResource(bundle: R.hostingBundle, name: "black_757575")
+    /// Color `black_ECECEC`.
+    static let black_ECECEC = Rswift.ColorResource(bundle: R.hostingBundle, name: "black_ECECEC")
+    /// Color `black_F6F6F6`.
+    static let black_F6F6F6 = Rswift.ColorResource(bundle: R.hostingBundle, name: "black_F6F6F6")
+    /// Color `blue_2E79BF`.
+    static let blue_2E79BF = Rswift.ColorResource(bundle: R.hostingBundle, name: "blue_2E79BF")
     /// Color `gray_F1F3F2`.
     static let gray_F1F3F2 = Rswift.ColorResource(bundle: R.hostingBundle, name: "gray_F1F3F2")
-    /// Color `red_F15A43`.
-    static let red_F15A43 = Rswift.ColorResource(bundle: R.hostingBundle, name: "red_F15A43")
+    /// Color `green_3C9E81`.
+    static let green_3C9E81 = Rswift.ColorResource(bundle: R.hostingBundle, name: "green_3C9E81")
+    /// Color `green_F5FAF9`.
+    static let green_F5FAF9 = Rswift.ColorResource(bundle: R.hostingBundle, name: "green_F5FAF9")
+    /// Color `orange_D67D24`.
+    static let orange_D67D24 = Rswift.ColorResource(bundle: R.hostingBundle, name: "orange_D67D24")
+    /// Color `orange_FDF8F4`.
+    static let orange_FDF8F4 = Rswift.ColorResource(bundle: R.hostingBundle, name: "orange_FDF8F4")
+    /// Color `red_F1435A`.
+    static let red_F1435A = Rswift.ColorResource(bundle: R.hostingBundle, name: "red_F1435A")
+    /// Color `red_FEF6F7`.
+    static let red_FEF6F7 = Rswift.ColorResource(bundle: R.hostingBundle, name: "red_FEF6F7")
     /// Color `white_FFFFFF`.
     static let white_FFFFFF = Rswift.ColorResource(bundle: R.hostingBundle, name: "white_FFFFFF")
-
-    #if os(iOS) || os(tvOS)
-    /// `UIColor(named: "black_000000_14", bundle: ..., traitCollection: ...)`
-    @available(tvOS 11.0, *)
-    @available(iOS 11.0, *)
-    static func black_000000_14(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
-      return UIKit.UIColor(resource: R.color.black_000000_14, compatibleWith: traitCollection)
-    }
-    #endif
 
     #if os(iOS) || os(tvOS)
     /// `UIColor(named: "black_444444", bundle: ..., traitCollection: ...)`
@@ -143,6 +150,42 @@ struct R: Rswift.Validatable {
     @available(iOS 11.0, *)
     static func black_444444(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
       return UIKit.UIColor(resource: R.color.black_444444, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "black_757575", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func black_757575(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.black_757575, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "black_ECECEC", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func black_ECECEC(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.black_ECECEC, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "black_F6F6F6", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func black_F6F6F6(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.black_F6F6F6, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "blue_2E79BF", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func blue_2E79BF(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.blue_2E79BF, compatibleWith: traitCollection)
     }
     #endif
 
@@ -156,11 +199,56 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
-    /// `UIColor(named: "red_F15A43", bundle: ..., traitCollection: ...)`
+    /// `UIColor(named: "green_3C9E81", bundle: ..., traitCollection: ...)`
     @available(tvOS 11.0, *)
     @available(iOS 11.0, *)
-    static func red_F15A43(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
-      return UIKit.UIColor(resource: R.color.red_F15A43, compatibleWith: traitCollection)
+    static func green_3C9E81(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.green_3C9E81, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "green_F5FAF9", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func green_F5FAF9(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.green_F5FAF9, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "orange_D67D24", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func orange_D67D24(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.orange_D67D24, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "orange_FDF8F4", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func orange_FDF8F4(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.orange_FDF8F4, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "red_F1435A", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func red_F1435A(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.red_F1435A, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "red_FEF6F7", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func red_FEF6F7(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.red_FEF6F7, compatibleWith: traitCollection)
     }
     #endif
 
@@ -174,18 +262,42 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(watchOS)
-    /// `UIColor(named: "black_000000_14", bundle: ..., traitCollection: ...)`
-    @available(watchOSApplicationExtension 4.0, *)
-    static func black_000000_14(_: Void = ()) -> UIKit.UIColor? {
-      return UIKit.UIColor(named: R.color.black_000000_14.name)
-    }
-    #endif
-
-    #if os(watchOS)
     /// `UIColor(named: "black_444444", bundle: ..., traitCollection: ...)`
     @available(watchOSApplicationExtension 4.0, *)
     static func black_444444(_: Void = ()) -> UIKit.UIColor? {
       return UIKit.UIColor(named: R.color.black_444444.name)
+    }
+    #endif
+
+    #if os(watchOS)
+    /// `UIColor(named: "black_757575", bundle: ..., traitCollection: ...)`
+    @available(watchOSApplicationExtension 4.0, *)
+    static func black_757575(_: Void = ()) -> UIKit.UIColor? {
+      return UIKit.UIColor(named: R.color.black_757575.name)
+    }
+    #endif
+
+    #if os(watchOS)
+    /// `UIColor(named: "black_ECECEC", bundle: ..., traitCollection: ...)`
+    @available(watchOSApplicationExtension 4.0, *)
+    static func black_ECECEC(_: Void = ()) -> UIKit.UIColor? {
+      return UIKit.UIColor(named: R.color.black_ECECEC.name)
+    }
+    #endif
+
+    #if os(watchOS)
+    /// `UIColor(named: "black_F6F6F6", bundle: ..., traitCollection: ...)`
+    @available(watchOSApplicationExtension 4.0, *)
+    static func black_F6F6F6(_: Void = ()) -> UIKit.UIColor? {
+      return UIKit.UIColor(named: R.color.black_F6F6F6.name)
+    }
+    #endif
+
+    #if os(watchOS)
+    /// `UIColor(named: "blue_2E79BF", bundle: ..., traitCollection: ...)`
+    @available(watchOSApplicationExtension 4.0, *)
+    static func blue_2E79BF(_: Void = ()) -> UIKit.UIColor? {
+      return UIKit.UIColor(named: R.color.blue_2E79BF.name)
     }
     #endif
 
@@ -198,10 +310,50 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(watchOS)
-    /// `UIColor(named: "red_F15A43", bundle: ..., traitCollection: ...)`
+    /// `UIColor(named: "green_3C9E81", bundle: ..., traitCollection: ...)`
     @available(watchOSApplicationExtension 4.0, *)
-    static func red_F15A43(_: Void = ()) -> UIKit.UIColor? {
-      return UIKit.UIColor(named: R.color.red_F15A43.name)
+    static func green_3C9E81(_: Void = ()) -> UIKit.UIColor? {
+      return UIKit.UIColor(named: R.color.green_3C9E81.name)
+    }
+    #endif
+
+    #if os(watchOS)
+    /// `UIColor(named: "green_F5FAF9", bundle: ..., traitCollection: ...)`
+    @available(watchOSApplicationExtension 4.0, *)
+    static func green_F5FAF9(_: Void = ()) -> UIKit.UIColor? {
+      return UIKit.UIColor(named: R.color.green_F5FAF9.name)
+    }
+    #endif
+
+    #if os(watchOS)
+    /// `UIColor(named: "orange_D67D24", bundle: ..., traitCollection: ...)`
+    @available(watchOSApplicationExtension 4.0, *)
+    static func orange_D67D24(_: Void = ()) -> UIKit.UIColor? {
+      return UIKit.UIColor(named: R.color.orange_D67D24.name)
+    }
+    #endif
+
+    #if os(watchOS)
+    /// `UIColor(named: "orange_FDF8F4", bundle: ..., traitCollection: ...)`
+    @available(watchOSApplicationExtension 4.0, *)
+    static func orange_FDF8F4(_: Void = ()) -> UIKit.UIColor? {
+      return UIKit.UIColor(named: R.color.orange_FDF8F4.name)
+    }
+    #endif
+
+    #if os(watchOS)
+    /// `UIColor(named: "red_F1435A", bundle: ..., traitCollection: ...)`
+    @available(watchOSApplicationExtension 4.0, *)
+    static func red_F1435A(_: Void = ()) -> UIKit.UIColor? {
+      return UIKit.UIColor(named: R.color.red_F1435A.name)
+    }
+    #endif
+
+    #if os(watchOS)
+    /// `UIColor(named: "red_FEF6F7", bundle: ..., traitCollection: ...)`
+    @available(watchOSApplicationExtension 4.0, *)
+    static func red_FEF6F7(_: Void = ()) -> UIKit.UIColor? {
+      return UIKit.UIColor(named: R.color.red_FEF6F7.name)
     }
     #endif
 

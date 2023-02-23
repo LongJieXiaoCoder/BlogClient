@@ -16,7 +16,10 @@ let kBottomTabBarHeight: CGFloat = isIPhoneXSeries() ? 34+49 : 49
 let kScreenWidth: CGFloat = UIScreen.main.bounds.size.width    // 暂只支持竖屏
 let kScreenHeight: CGFloat = UIScreen.main.bounds.size.height
 
+//MARK: - 当前的语言
 let kAppLanguage: Array = LanguageManager.share.appLanguage
+
+
 
 
 // MARK: - Log

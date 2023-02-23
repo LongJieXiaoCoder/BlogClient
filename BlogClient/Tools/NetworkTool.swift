@@ -27,7 +27,6 @@ class NetworkTool {
             AF.request(API.url.connectToken, method: .post, parameters: [API.rpk.grant_type : API.rpv.client_credentials], headers: HTTPHeaders([authHeader])).responseDecodable(of: OAuth.self) { response in
                 switch response.result {
                 case .success(let model):
-                    print("oauthModel: \(model)")
                     model.expiresDate = Date().addingTimeInterval(model.expiresIn)
                     StoreHelper.write(model, to: FilePath.oauthFilePath)
                     

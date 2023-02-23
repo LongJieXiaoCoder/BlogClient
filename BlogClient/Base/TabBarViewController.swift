@@ -28,7 +28,7 @@ class TabBarViewController: UITabBarController {
         child.title = title
         child.tabBarItem.image = image
         child.tabBarItem.selectedImage = selectedImage?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
-        child.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: R.color.red_F15A43() ?? UIColor.red], for: .selected)
+        child.tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: R.color.red_F1435A() ?? UIColor.red], for: .selected)
         self.addChild(child);
     }
     
@@ -37,12 +37,12 @@ class TabBarViewController: UITabBarController {
             let appearance: UITabBarAppearance =  UITabBarAppearance.init()
             appearance.backgroundColor = R.color.white_FFFFFF()
             appearance.stackedLayoutAppearance.normal.titleTextAttributes = [NSAttributedString.Key.font: R.font.hkGroteskRegular(size: 12) ?? UIFont.init(), NSAttributedString.Key.foregroundColor: R.color.black_444444() ?? UIColor.black]
-            appearance.stackedLayoutAppearance.selected.titleTextAttributes = [NSAttributedString.Key.font: R.font.hkGroteskRegular(size: 12) ?? UIFont.init(), NSAttributedString.Key.foregroundColor: R.color.red_F15A43() ?? UIColor.red]
+            appearance.stackedLayoutAppearance.selected.titleTextAttributes = [NSAttributedString.Key.font: R.font.hkGroteskRegular(size: 12) ?? UIFont.init(), NSAttributedString.Key.foregroundColor: R.color.red_F1435A() ?? UIColor.red]
             self.tabBar.scrollEdgeAppearance = appearance
         } else {
             // 设置文字颜色
             UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: R.font.hkGroteskRegular(size: 12) ?? UIFont.init(), NSAttributedString.Key.foregroundColor: R.color.black_444444() ?? UIColor.black], for: .normal)
-            UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: R.font.hkGroteskRegular(size: 12) ?? UIFont.init(), NSAttributedString.Key.foregroundColor: R.color.red_F15A43() ?? UIColor.red], for: .selected)
+            UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: R.font.hkGroteskRegular(size: 12) ?? UIFont.init(), NSAttributedString.Key.foregroundColor: R.color.red_F1435A() ?? UIColor.red], for: .selected)
         }
     }
 }

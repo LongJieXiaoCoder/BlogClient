@@ -16,9 +16,10 @@ enum HomePageType: Int {
 
 class HomePageView: PageView {
     lazy var tableView: UITableView = {
-        tableView = UITableView.lc.initTableView(frame: CGRect.zero, style: .plain, delegate: self, dataSource: self, separatorStyle: .none, showIndicator: true)
+        tableView = UITableView.lc.initTableView(frame: CGRect.zero, style: .grouped, delegate: self, dataSource: self, separatorStyle: .none, showIndicator: true)
         tableView.refreshDelegate = self
-        tableView.register(HomePageViewCell.self, forCellReuseIdentifier: NSStringFromClass(HomePageViewCell.self))
+//        tableView.register(HomePageViewCell.self, forCellReuseIdentifier: NSStringFromClass(HomePageViewCell.self))
+        tableView.register(BlogItemTableViewCell.self, forCellReuseIdentifier: NSStringFromClass(BlogItemTableViewCell.self))
         return tableView
     }()
     
@@ -114,8 +115,8 @@ extension HomePageView: RefreshDelegate {
 // MARK: - UITableViewDelegate
 extension HomePageView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        guard let itemModel = dataSource.lc.objectAtIndex(indexPath.row) as? BlogItem else { return 0 }
-        return HomePageViewCell.cellHeight(itemModel)
+        guard let itemModel = dataSource.lc.objectAtIndex(indexPath.section) as? BlogItem else { return 0 }
+        return BlogItemTableViewCell.cellHeight(itemModel)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -144,15 +145,39 @@ extension HomePageView: UITableViewDelegate {
 
 // MARK: - UITableViewDataSource
 extension HomePageView: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
         dataSource.count
     }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        1
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0.001
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 8
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 0.001))
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 8))
+        footerView.backgroundColor = R.color.black_ECECEC()
+        return footerView
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let itemModel = dataSource.lc.objectAtIndex(indexPath.row) as? BlogItem else { return UITableViewCell() }
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: NSStringFromClass(HomePageViewCell.self), for: indexPath) as? HomePageViewCell else { return UITableViewCell() }
+        guard let itemModel = dataSource.lc.objectAtIndex(indexPath.section) as? BlogItem else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: NSStringFromClass(BlogItemTableViewCell.self), for: indexPath) as? BlogItemTableViewCell else { return UITableViewCell() }
         cell.configCell(withItemModel: itemModel)
-        cell.delegate = self
+//        cell.delegate = self
         return cell
     }
 }

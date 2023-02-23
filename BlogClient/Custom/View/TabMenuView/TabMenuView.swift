@@ -31,7 +31,7 @@ class TabMenuView: UIBaseView {
     
     lazy var markView: UIView = {
         let view = UIView()
-        view.backgroundColor = R.color.red_F15A43()
+        view.backgroundColor = R.color.red_F1435A()
         view.lc.addCorner(1.5)
         return view
     }()
