@@ -10,7 +10,15 @@ import UIKit
 import SnapKit
 
 
+protocol BlogItemTableViewCellDelegate: NSObjectProtocol{
+    func faveAction(_ model: BlogItem)
+    func commentAction(_ model: BlogItem)
+}
+
 class BlogItemTableViewCell: UITableViewCell {
+    weak var delegate: BlogItemTableViewCellDelegate?
+    var model: BlogItem?
+
     lazy var titleLabel: UILabel = {
         return UILabel.lc.initLable(frame: CGRect.zero, title: "", textColor: R.color.black_444444(), font: R.font.stHeitiSCMedium(size: 16), numberOfLines: 0)
     }()
@@ -38,6 +46,7 @@ class BlogItemTableViewCell: UITableViewCell {
         likeItemView = IconLabelView.init(frame: CGRect.zero)
         likeItemView.textLabel.font = R.font.hkGroteskRegular(size: 10)
         likeItemView.textLabel.textColor = R.color.black_757575()
+        likeItemView.lc.addTapGesture(target: self, action: #selector(likeItemViewClickAction))
         return likeItemView
     }()
     
@@ -45,6 +54,7 @@ class BlogItemTableViewCell: UITableViewCell {
         commentItemView = IconLabelView.init(frame: CGRect.zero)
         commentItemView.textLabel.font = R.font.hkGroteskRegular(size: 10)
         commentItemView.textLabel.textColor = R.color.black_757575()
+        commentItemView.lc.addTapGesture(target: self, action: #selector(commentItemViewClickAction))
         return commentItemView
     }()
     
@@ -87,7 +97,7 @@ extension BlogItemTableViewCell: InitViewProtocol {
             make.centerY.equalTo(userNameLable).offset(0)
             make.leading.equalTo(userNameLable.snp.trailing).offset(8)
             make.width.equalTo(1)
-            make.height.equalTo(20)
+            make.height.equalTo(15)
         }
         
         postTimeLabel.snp.makeConstraints { make in
@@ -106,14 +116,14 @@ extension BlogItemTableViewCell: InitViewProtocol {
         likeItemView.snp.makeConstraints { make in
             make.top.equalTo(desLabel.snp.bottom).offset(10)
             make.leading.equalTo(self.contentView).offset(16)
-            make.width.equalTo(50)
+            make.width.equalTo(30)
             make.height.equalTo(15)
         }
         
         commentItemView.snp.makeConstraints { make in
             make.centerY.equalTo(likeItemView).offset(0)
-            make.leading.equalTo(likeItemView.snp.trailing).offset(16)
-            make.width.equalTo(50)
+            make.leading.equalTo(likeItemView.snp.trailing).offset(10)
+            make.width.equalTo(30)
             make.height.equalTo(15)
         }
     }
@@ -123,23 +133,33 @@ extension BlogItemTableViewCell: InitViewProtocol {
 // MARK: Public Method
 extension BlogItemTableViewCell {
     func configCell(withItemModel model: BlogItem) {
+        self.model = model
         titleLabel.text = model.title
-        userNameLable.text = model.blogName
+        userNameLable.text = model.author
         postTimeLabel.text = Date.lc.timeAgoWithDate(model.postDate)
         desLabel.text = model.description
         
         likeItemView.configView(withIcon: R.image.fave(), text: "\(model.diggCount)")
         commentItemView.configView(withIcon: R.image.comment(), text: "\(model.commentCount)")
-        
-        
-//        lookView.configView(withIcon: R.image.views(), text: "\(views)")
-//        headView.configHeadView(avatarUrl: model.avatar, blogName: model.blogName, postTime: Date.lc.timeAgoWithDate(model.postDate))
-//        bottomView.configBottomView(withFave: model.diggCount, comments: model.commentCount, views: model.viewCount)
     }
     
     static func cellHeight(_ model: BlogItem) -> CGFloat {
         let titleHeight = model.title.lc.stringHeight(font: R.font.stHeitiSCMedium(size: 16), maxWidth: kScreenWidth - 32, lineSpace: 5)
-        print("titleHeight: \(titleHeight)， title = \(model.title)")
-        return 120 + titleHeight;
+        return 115 + titleHeight;
+    }
+}
+
+//MARK: - Private Method
+extension BlogItemTableViewCell {
+    @objc func likeItemViewClickAction() {
+        if let delegate = delegate, let model = self.model {
+            delegate.faveAction(model)
+        }
+    }
+    
+    @objc func commentItemViewClickAction() {
+        if let delegate = delegate, let model = self.model {
+            delegate.commentAction(model)
+        }
     }
 }

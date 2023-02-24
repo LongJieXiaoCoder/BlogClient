@@ -12,7 +12,7 @@ import SnapKit
 class SearchBar: UIView {
     lazy var searchIcon: UIImageView = {
         searchIcon = UIImageView.init()
-        searchIcon.image = R.image.search()
+        searchIcon.image = R.image.nav_search_icon()
         return searchIcon
     }()
     
@@ -46,7 +46,7 @@ extension SearchBar: InitViewProtocol {
         searchIcon.snp.makeConstraints { make in
             make.leading.equalTo(self).offset(10)
             make.centerY.equalTo(self).offset(0)
-            make.size.equalTo(CGSize(width: 15, height: 15))
+            make.size.equalTo(CGSize(width: 20, height: 20))
         }
         searchInputView.snp.makeConstraints { make in
             make.leading.equalTo(searchIcon.snp.trailing).offset(5)

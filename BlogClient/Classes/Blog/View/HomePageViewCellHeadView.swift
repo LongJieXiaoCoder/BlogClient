@@ -20,6 +20,7 @@ class HomePageViewCellHeadView: UIBaseView {
     var blogNameLabel: UILabel!
     var postTimeLabel: UILabel!
     var leftIconView: UIImageView!
+    var leftButton: UIButton!
     var nameAndTimeView: UIView!
     
     override init(frame: CGRect) {
@@ -31,10 +32,19 @@ class HomePageViewCellHeadView: UIBaseView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func configHeadView(avatarUrl: String, blogName: String, postTime: String, viewCount: Int) {
+        avatarView.kf.setImage(with:URL(string: avatarUrl), placeholder: R.image.accountAvatar())
+        blogNameLabel.text = blogName
+        postTimeLabel.text =  "\(postTime) * \(R.string.localizable.viewCount(preferredLanguages: LanguageManager.share.appLanguage))\(viewCount)"
+        
+        // 屏蔽掉一些view
+        leftIconView.isHidden = true
+    }
+    
     func configHeadView(avatarUrl: String, blogName: String, postTime: String) {
         avatarView.kf.setImage(with:URL(string: avatarUrl), placeholder: R.image.accountAvatar())
         blogNameLabel.text = blogName
-        postTimeLabel.text = postTime
+        postTimeLabel.text =  postTime
     }
     
     @objc func avatarAction() {
@@ -55,12 +65,14 @@ extension HomePageViewCellHeadView: InitViewProtocol {
         self.addSubview(nameAndTimeView)
         
         blogNameLabel = UILabel.lc.initLable(frame: CGRect.zero, textColor: R.color.black_444444(), font: R.font.stHeitiSCMedium(size: 16))
-        postTimeLabel = UILabel.lc.initLable(frame: CGRect.zero, textColor: R.color.black_444444(), font: R.font.hkGroteskRegular(size: 12))
+        postTimeLabel = UILabel.lc.initLable(frame: CGRect.zero, textColor: R.color.black_757575(), font: R.font.hkGroteskRegular(size: 12))
         nameAndTimeView.addSubview(blogNameLabel)
         nameAndTimeView.addSubview(postTimeLabel)
         
         leftIconView = UIImageView.lc.initImageView(frame: CGRect.zero, image: R.image.more())  // modify by longchi
         self.addSubview(leftIconView)
+        
+//        leftButton = UIButton.lc.initButton(frame: CGRect., title: <#T##String#>, font: <#T##UIFont?#>, titleColor: <#T##UIColor?#>)
     }
     
     func autoLayoutView() {

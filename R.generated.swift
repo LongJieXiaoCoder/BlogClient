@@ -495,7 +495,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 28 images.
+  /// This `R.image` struct is generated, and contains static references to 37 images.
   struct image {
     /// Image `accountAbout`.
     static let accountAbout = Rswift.ImageResource(bundle: R.hostingBundle, name: "accountAbout")
@@ -523,10 +523,28 @@ struct R: Rswift.Validatable {
     static let home_logo = Rswift.ImageResource(bundle: R.hostingBundle, name: "home_logo")
     /// Image `lanugchImage`.
     static let lanugchImage = Rswift.ImageResource(bundle: R.hostingBundle, name: "lanugchImage")
+    /// Image `like_icon_off`.
+    static let like_icon_off = Rswift.ImageResource(bundle: R.hostingBundle, name: "like_icon_off")
+    /// Image `like_icon_on`.
+    static let like_icon_on = Rswift.ImageResource(bundle: R.hostingBundle, name: "like_icon_on")
     /// Image `logo`.
     static let logo = Rswift.ImageResource(bundle: R.hostingBundle, name: "logo")
     /// Image `more`.
     static let more = Rswift.ImageResource(bundle: R.hostingBundle, name: "more")
+    /// Image `nav_back_icon`.
+    static let nav_back_icon = Rswift.ImageResource(bundle: R.hostingBundle, name: "nav_back_icon")
+    /// Image `nav_clear_icon`.
+    static let nav_clear_icon = Rswift.ImageResource(bundle: R.hostingBundle, name: "nav_clear_icon")
+    /// Image `nav_close_icon`.
+    static let nav_close_icon = Rswift.ImageResource(bundle: R.hostingBundle, name: "nav_close_icon")
+    /// Image `nav_more_icon`.
+    static let nav_more_icon = Rswift.ImageResource(bundle: R.hostingBundle, name: "nav_more_icon")
+    /// Image `nav_search_icon`.
+    static let nav_search_icon = Rswift.ImageResource(bundle: R.hostingBundle, name: "nav_search_icon")
+    /// Image `nav_setting_icon`.
+    static let nav_setting_icon = Rswift.ImageResource(bundle: R.hostingBundle, name: "nav_setting_icon")
+    /// Image `nav_share_icon`.
+    static let nav_share_icon = Rswift.ImageResource(bundle: R.hostingBundle, name: "nav_share_icon")
     /// Image `rightArrow`.
     static let rightArrow = Rswift.ImageResource(bundle: R.hostingBundle, name: "rightArrow")
     /// Image `search`.
@@ -646,6 +664,20 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "like_icon_off", bundle: ..., traitCollection: ...)`
+    static func like_icon_off(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.like_icon_off, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "like_icon_on", bundle: ..., traitCollection: ...)`
+    static func like_icon_on(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.like_icon_on, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "logo", bundle: ..., traitCollection: ...)`
     static func logo(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.logo, compatibleWith: traitCollection)
@@ -656,6 +688,55 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "more", bundle: ..., traitCollection: ...)`
     static func more(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.more, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "nav_back_icon", bundle: ..., traitCollection: ...)`
+    static func nav_back_icon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.nav_back_icon, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "nav_clear_icon", bundle: ..., traitCollection: ...)`
+    static func nav_clear_icon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.nav_clear_icon, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "nav_close_icon", bundle: ..., traitCollection: ...)`
+    static func nav_close_icon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.nav_close_icon, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "nav_more_icon", bundle: ..., traitCollection: ...)`
+    static func nav_more_icon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.nav_more_icon, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "nav_search_icon", bundle: ..., traitCollection: ...)`
+    static func nav_search_icon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.nav_search_icon, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "nav_setting_icon", bundle: ..., traitCollection: ...)`
+    static func nav_setting_icon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.nav_setting_icon, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "nav_share_icon", bundle: ..., traitCollection: ...)`
+    static func nav_share_icon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.nav_share_icon, compatibleWith: traitCollection)
     }
     #endif
 
@@ -858,7 +939,7 @@ struct R: Rswift.Validatable {
       fileprivate init() {}
     }
 
-    /// This `R.string.localizable` struct is generated, and contains static references to 19 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 20 localization keys.
     struct localizable {
       /// en translation: %i hours ago
       ///
@@ -928,6 +1009,10 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: zh-Hans, en
       static let yesterdayTime = Rswift.StringResource(key: "yesterdayTime", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans", "en"], comment: nil)
+      /// en translation: viewCount
+      ///
+      /// Locales: zh-Hans, en
+      static let viewCount = Rswift.StringResource(key: "viewCount", tableName: "Localizable", bundle: R.hostingBundle, locales: ["zh-Hans", "en"], comment: nil)
       /// en translation: 精选
       ///
       /// Locales: zh-Hans, en
@@ -1198,6 +1283,21 @@ struct R: Rswift.Validatable {
 
         let format = NSLocalizedString("yesterdayTime", bundle: bundle, comment: "")
         return String(format: format, locale: locale, value1)
+      }
+
+      /// en translation: viewCount
+      ///
+      /// Locales: zh-Hans, en
+      static func viewCount(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("viewCount", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "viewCount"
+        }
+
+        return NSLocalizedString("viewCount", bundle: bundle, comment: "")
       }
 
       /// en translation: 精选

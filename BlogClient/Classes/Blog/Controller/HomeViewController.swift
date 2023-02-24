@@ -10,8 +10,8 @@ import UIKit
 import SnapKit
 
 class HomeViewController: UIBaseViewController {
-    lazy var navigationBarView: NavigationBarView = {
-        navigationBarView = NavigationBarView(frame: CGRect.zero)
+    lazy var navigationBarView: HomeNavigationBarView = {
+        navigationBarView = HomeNavigationBarView(frame: CGRect.zero)
         navigationBarView.delegate = self
         return navigationBarView
     }()
@@ -72,8 +72,8 @@ extension HomeViewController: InitViewProtocol {
     }
 }
 
-// MARK: - NavigationBarViewDelegate
-extension HomeViewController: NavigationBarViewDelegate {
+// MARK: - HomeNavigationBarViewDelegate
+extension HomeViewController: HomeNavigationBarViewDelegate {
     func logoAction() {
         // TODO: 处理点击logo
     }

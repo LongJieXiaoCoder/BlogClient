@@ -120,7 +120,7 @@ extension HomePageView: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let itemModel = dataSource.lc.objectAtIndex(indexPath.row) as? BlogItem else { return }
+        guard let itemModel = dataSource.lc.objectAtIndex(indexPath.section) as? BlogItem else { return }
         let url = API.url.blogpostsBody(blogId: "\(itemModel.id)")
         
         HomeService.getHomeBlogInfo(url: url) { [weak self] (responseObject, status) in
@@ -128,7 +128,7 @@ extension HomePageView: UITableViewDelegate {
             case .success:
                 if let body = responseObject as? String {
                     let HTMLString = ContentHTMLTemplateWithArgs(titleFontSize: 24.0, titleFontColor: "#000000", timeFontSize: 16.0, timeFontColor: "#5F5F5F", bodyFontSize: 16.0, bodyFontColor: "#3F3F3F", title: itemModel.title, time: Date.lc.timeAgoWithDate(itemModel.postDate), body: body)
-                    self?.openArtical(HTMLString: HTMLString)
+                    self?.openArtical(HTMLString: HTMLString, model: itemModel)
                 }
             case .failure:
                 log("失败了")
@@ -136,8 +136,8 @@ extension HomePageView: UITableViewDelegate {
         }
     }
     
-    func openArtical(HTMLString: String) {
-        let displayContentVc = DisplayContentViewController(HTMLString: HTMLString)
+    func openArtical(HTMLString: String, model: BlogItem) {
+        let displayContentVc = DisplayContentViewController(HTMLString: HTMLString, model: model)
         displayContentVc.hidesBottomBarWhenPushed = true
         NavigationViewController.pushViewController(displayContentVc, animation: true)
     }
@@ -177,26 +177,18 @@ extension HomePageView: UITableViewDataSource {
         guard let itemModel = dataSource.lc.objectAtIndex(indexPath.section) as? BlogItem else { return UITableViewCell() }
         guard let cell = tableView.dequeueReusableCell(withIdentifier: NSStringFromClass(BlogItemTableViewCell.self), for: indexPath) as? BlogItemTableViewCell else { return UITableViewCell() }
         cell.configCell(withItemModel: itemModel)
-//        cell.delegate = self
+        cell.delegate = self
         return cell
     }
 }
 
-// MARK: - HomePageViewCellDelegate
-extension HomePageView: HomePageViewCellDelegate {
-    func faveAction() {
+// MARK: - BlogItemTableViewCellDelegate
+extension HomePageView: BlogItemTableViewCellDelegate {
+    func faveAction(_ model: BlogItem) {
         log("faveAction")
     }
     
-    func commentAction() {
+    func commentAction(_ model: BlogItem) {
         log("commentAction")
-    }
-    
-    func lookAction() {
-        log("lookAction")
-    }
-    
-    func avatarAction() {
-        log("avatarAction")
     }
 }

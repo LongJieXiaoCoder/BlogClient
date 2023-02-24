@@ -10,8 +10,50 @@ import UIKit
 import WebKit
 
 class DisplayContentViewController: UIBaseViewController {
-    var statusBarView: UIView! = nil
-    var wkWebView: WKWebView! = nil
+    var model: BlogItem?
+    var titleHeight: CGFloat = 25.0
+    var headerPadding: CGFloat = 15
+    
+    //MARK: 视图的初始化
+    lazy var statusBarView: UIView = {
+        statusBarView = UIView.init()
+        statusBarView.backgroundColor = R.color.white_FFFFFF()
+        return statusBarView
+    }()
+    
+    lazy var navigationBarView: BlogContentNavigationBarView = {
+        navigationBarView = BlogContentNavigationBarView(frame: CGRect.zero)
+        navigationBarView.delegate = self
+        return navigationBarView
+    }()
+
+    lazy var wkWebView: WKWebView = {
+        wkWebView = WKWebView(frame: CGRect.zero, configuration: configuration())
+        wkWebView.navigationDelegate = self
+        wkWebView.uiDelegate = self
+        wkWebView.addObserver(self, forKeyPath: US.keyPath.estimatedProgress, options: .new, context: nil)
+        wkWebView.addObserver(self, forKeyPath: US.keyPath.title, options: .new, context: nil)
+        
+        wkWebView.scrollView.contentInset = UIEdgeInsets.init(top: HomePageViewCellHeadView.kHeadViewHeight + self.titleHeight + self.headerPadding, left: 0, bottom: 0, right: 0)
+        wkWebView.scrollView.addSubview(titleLabel)
+        wkWebView.scrollView.addSubview(headView)
+        return wkWebView
+    }()
+    
+    lazy var titleLabel: UILabel = {
+        titleLabel = UILabel.lc.initLable(frame: CGRectMake(16, -(self.titleHeight + HomePageViewCellHeadView.kHeadViewHeight + self.headerPadding), kScreenWidth - 32, self.titleHeight), textColor: R.color.black_444444(), font: R.font.stHeitiSCMedium(size: 24), numberOfLines: 0)
+        titleLabel.text = self.model?.title
+        return titleLabel
+    }()
+    
+    lazy var headView: HomePageViewCellHeadView = {
+        headView = HomePageViewCellHeadView(frame: CGRectMake(0, -(HomePageViewCellHeadView.kHeadViewHeight), kScreenWidth, HomePageViewCellHeadView.kHeadViewHeight))
+        headView.configHeadView(avatarUrl: self.model?.avatar ?? "", blogName: self.model?.author ?? "", postTime: Date.lc.timeAgoWithDate(self.model?.postDate ?? Date()), viewCount: self.model?.viewCount ?? 0)
+        headView.delegate = self
+        return headView
+    }()
+
+    //MARK: 实例变量
     var requestUrl: String? = nil
     var HTMLString: String? = nil
 
@@ -24,8 +66,10 @@ class DisplayContentViewController: UIBaseViewController {
         requestUrl = url
     }
     
-    convenience init(HTMLString: String) {
+    convenience init(HTMLString: String, model: BlogItem) {
         self.init(nibName: nil, bundle: nil)
+        self.model = model
+        self.titleHeight = self.model?.title.lc.stringHeight(font: R.font.stHeitiSCMedium(size: 24), maxWidth: kScreenWidth - 32, lineSpace: 5) ?? 25
         self.HTMLString = HTMLString
     }
 
@@ -40,6 +84,7 @@ class DisplayContentViewController: UIBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = R.color.white_FFFFFF()
         self.setupUI()
         self.view.showHUD()
         
@@ -57,35 +102,27 @@ class DisplayContentViewController: UIBaseViewController {
 // MARK: - InitViewProtocol
 extension DisplayContentViewController: InitViewProtocol {
     func initView() {
-        statusBarView = UIView.init()
-        statusBarView.backgroundColor = R.color.white_FFFFFF()
         self.view.addSubview(statusBarView)
-        
-        // wkwebview
-        wkWebView = initWKWebView()
+        self.view.addSubview(navigationBarView)
         self.view.addSubview(wkWebView)
     }
     
     func autoLayoutView() {
-        statusBarView.mas_makeConstraints { (make) in
-            make?.leading.trailing()?.top()?.mas_equalTo()(self.view)?.offset()(0)
-            make?.height.mas_equalTo()(kStatusBarHeight)
+        statusBarView.snp.makeConstraints { make in
+            make.leading.trailing.top.equalTo(self.view).offset(0)
+            make.height.equalTo(kStatusBarHeight)
         }
-        wkWebView.mas_makeConstraints { (make) in
-            make?.top.mas_equalTo()(statusBarView.mas_bottom)?.offset()(0)
-            make?.leading.trailing()?.bottom()?.mas_equalTo()(self.view)?.offset()(0)
+        
+        navigationBarView.snp.makeConstraints { make in
+            make.top.equalTo(statusBarView.snp.bottom).offset(0)
+            make.leading.trailing.equalTo(self.view).offset(0)
+            make.height.equalTo(kNavigationBarContentHeight)
         }
-    }
-    
-    func initWKWebView() -> WKWebView {
-        let wkWebView = WKWebView(frame: CGRect.zero, configuration: configuration())
         
-        wkWebView.navigationDelegate = self
-        wkWebView.uiDelegate = self
-        
-        wkWebView.addObserver(self, forKeyPath: US.keyPath.estimatedProgress, options: .new, context: nil)
-        wkWebView.addObserver(self, forKeyPath: US.keyPath.title, options: .new, context: nil)
-        return wkWebView
+        wkWebView.snp.makeConstraints { make in
+            make.top.equalTo(navigationBarView.snp.bottom).offset(0)
+            make.leading.trailing.bottom.equalTo(self.view).offset(0)
+        }
     }
     
     func configuration() -> WKWebViewConfiguration {
@@ -105,6 +142,33 @@ extension DisplayContentViewController: InitViewProtocol {
 //        let userScript: WKUserScript = WKUserScript(source: source, injectionTime: WKUserScriptInjectionTime.atDocumentEnd, forMainFrameOnly: false)
 //        userContentController.addUserScript(userScript)
         return userContentController
+    }
+}
+
+extension DisplayContentViewController: HomePageViewCellHeadViewDelegate {
+    func avatarAction() {
+        
+    }
+}
+
+extension DisplayContentViewController: BlogContentNavigationBarViewDelegate {
+    func backAction() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    func shareAction() {
+        // 要分享的内容
+        let shareContent = "哈哈哈哈哈"
+
+        // 要分享的图片
+        let shareImage = R.image.nav_share_icon
+
+        // 创建一个 UIActivityViewController 实例，指定要分享的内容和图片
+        let activityViewController = UIActivityViewController(activityItems: [shareContent, shareImage], applicationActivities: nil)
+        // 在 iPad 上，需要指定弹窗的位置，可以使用 barButtonItem 或者 sourceView
+        activityViewController.popoverPresentationController?.barButtonItem = self.navigationItem.rightBarButtonItem
+        // 弹出分享弹窗
+        self.present(activityViewController, animated: true, completion: nil)
     }
 }
 

@@ -1,5 +1,5 @@
 //
-//  NavigationBarView.swift
+//  HomeNavigationBarView.swift
 //  BlogClient
 //
 //  Created by Long on 2020/5/18.
@@ -9,14 +9,14 @@
 import UIKit
 import SnapKit
 
-@objc protocol NavigationBarViewDelegate: NSObjectProtocol {
+@objc protocol HomeNavigationBarViewDelegate: NSObjectProtocol {
     @objc func logoAction()
     @objc func searchAction()
     
 }
 
-class NavigationBarView: UIBaseView {
-    weak var delegate: NavigationBarViewDelegate?
+class HomeNavigationBarView: UIBaseView {
+    weak var delegate: HomeNavigationBarViewDelegate?
     
     lazy var leftIcon: UIImageView = {
         leftIcon = UIImageView.lc.initImageView(frame: CGRect.zero, image: R.image.home_logo())
@@ -54,16 +54,12 @@ class NavigationBarView: UIBaseView {
 }
 
 // MARK: - Public Method
-extension NavigationBarView {
-    
-    
-//    func loadTabMenu(_ datas: [TabMenuItemProtocol]) {
-//        tabMenuView.loadTabMenu(datas: datas, selectedIndex: 0)
-//    }
+extension HomeNavigationBarView {
+
 }
 
 // MARK: - InitViewProtocol
-extension NavigationBarView: InitViewProtocol {
+extension HomeNavigationBarView: InitViewProtocol {
     func initView() {
         self.addSubview(leftIcon)
         self.addSubview(searchBar)
@@ -93,7 +89,7 @@ extension NavigationBarView: InitViewProtocol {
 }
 
 // MARK: - Action
-extension NavigationBarView {
+extension HomeNavigationBarView {
     @objc func selectLogo() {
         if let _ = delegate?.responds(to: #selector(delegate?.logoAction)) {
             delegate?.logoAction()

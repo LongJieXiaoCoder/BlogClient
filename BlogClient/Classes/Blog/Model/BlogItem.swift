@@ -8,10 +8,6 @@
 
 import Foundation
 
-struct BlogItemList: Codable {
-    var blogList: [BlogItem]
-}
-
 struct BlogItem: Codable {
     var id: Int = 0
     var title: String = ""          // 博文编号

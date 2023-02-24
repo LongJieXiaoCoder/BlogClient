@@ -49,7 +49,7 @@ class HomePageViewCell: UITableViewCell {
 // MARK: Public Method
 extension HomePageViewCell {
     func configCell(withItemModel model: BlogItem) {
-        headView.configHeadView(avatarUrl: model.avatar, blogName: model.blogName, postTime: Date.lc.timeAgoWithDate(model.postDate))
+        headView.configHeadView(avatarUrl: model.avatar, blogName: model.blogName, postTime: Date.lc.timeAgoWithDate(model.postDate), viewCount: model.viewCount)
         titleLabel.text = model.title
         titleLabel.lc.changeLineSpace(5)
         desLabel.text = model.description
